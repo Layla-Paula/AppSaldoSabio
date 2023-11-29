@@ -37,7 +37,7 @@ function AppDrawerNavigator() {
           drawerLabel: "Home",
         }}
       />
-       <AppDrawer.Screen
+      {/*} <AppDrawer.Screen
         name="DebtScreen"
         component={DebtScreen}
         options={{
@@ -46,7 +46,7 @@ function AppDrawerNavigator() {
           ),
           drawerLabel: 'Faturas',
         }}
-      /> 
+      /> */}
       <AppDrawer.Screen
         name="CategoryScreen"
         component={CategoryScreen}

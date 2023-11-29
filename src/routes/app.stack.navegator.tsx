@@ -36,17 +36,15 @@ function AppStackNavigator() {
             name="CategoryScreen" 
             component={CategoryScreen} 
             options={{ headerShown: false, }} />
-            
-          {/*<Stack.Screen 
-            name="Faturas" 
+          <Stack.Screen 
+            name="DebtScreen" 
             component={DebtScreen} 
-            options={{ headerShown: false, }} />*/}
+            options={{ headerShown: false, }} />
             <Stack.Screen 
             name="CreateDebtScreen" 
             component={CreateDebtScreen} 
             options={{ headerShown: false, }} />
-
-            
+           
 
     </Stack.Navigator> 
   );

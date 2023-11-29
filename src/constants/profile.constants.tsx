@@ -44,10 +44,10 @@ export const PROFILE_LIST = [
    ////     navigate: "BudgetScreen",
   //      icon: (color: string, size: number) => <MaterialCommunityIcons name="finance" size={size} color={color} />
   //  },
-  //  {
-  //      title: "Faturas",
-   //     divisor: false,
-   //     navigate: "DebtScreen",
-  //      icon: (color: string, size: number) => <AntDesign name="creditcard" size={size} color={color} />
-  //  },
+    {
+      title: "Faturas",
+        divisor: false,
+       navigate: "DebtScreen",
+       icon: (color: string, size: number) => <AntDesign name="creditcard" size={size} color={color} />
+   },
 ]

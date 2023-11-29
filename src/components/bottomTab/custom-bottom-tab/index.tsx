@@ -24,7 +24,7 @@ const CustomBottomTab = ({ navigation, state }: BottomTabBarProps) => {
         if (routeName == "Home") return <Feather name="home" size={size()} color={color} />
         if (routeName == "Transações") return <Entypo name="list" size={size()} color={color} />
         if (routeName == "Orçamento") return <Entypo name="calendar" size={size()} color={color}/>
-        if (routeName == "Relatório") return <Entypo name="bar-graph" size={size()} color={color}/>
+        if (routeName == "Profile") return <Feather name="user" size={size()} color={color} />
     }
 
     const toggleMenu = () => {
