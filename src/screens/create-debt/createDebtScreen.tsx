@@ -68,7 +68,7 @@ const CreateDebtScreen: React.FC = () => {
 
     const erros = [];
     if (!institution?.name) erros.push("Adicione a instituição");
-    if (institution.name == "OUTRO") {
+    if (institution.name == "ESCOLHA") {
       if (!institutionName) erros.push("Nome da instituição é obrigatória")
     }
     if (!getPipeMoneyNumber(total)) erros.push("O total é obrigatório e maior que zero");
@@ -217,13 +217,7 @@ const CreateDebtScreen: React.FC = () => {
             isLoadingButton={true}
             loadingEnd={loadingEnd}
           />
-          <CustomButtonAnimated
-            buttonText='Cancelar'
-            background={theme.button.primary}
-            onPress={handleClose}
-            isLoadingButton={true}
-            loadingEnd={loadingEnd}
-          />
+         
           
         </ScrollView>
       </View>

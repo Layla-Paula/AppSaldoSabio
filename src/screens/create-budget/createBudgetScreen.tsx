@@ -17,7 +17,7 @@ import { AppCategoryService } from '../../services/category';
 import CustomButtonAnimated from '../../components/global/custom-button-animated';
 import GlobalPicker from '../../components/global/picker';
 import AlertError from '../../components/global/alert-error';
-import { AppDebtsService } from '../../services/debts'; //
+import { AppDebtsService } from '../../services/debts'; 
 
 export const INPUT_MASK_OPTIONS = {
   precision: 2,
@@ -61,7 +61,6 @@ const CreateBudgetScreen: React.FC = () => {
 
     setBudgetForm(prev => ({ ...prev, categories, debts, total: getPipeMoneyString(total) }))
   }
-
   const setTotal = (total: string, index: number, type: "Categories" | "Debts") => {
     let categories = budgetForm.categories.map(c => c);
     let debts = budgetForm.debts.map(c => c);
@@ -69,16 +68,25 @@ const CreateBudgetScreen: React.FC = () => {
     if (type == "Categories") categories = categories.filter((_, i) => i !== index);
     if (type == "Debts") debts = debts.filter((_, i) => i !== index);
 
-    const formatTotal = (partial: string) => parseFloat(partial.replace(",", "."))
+    
 
-    const sumCategories = categories.reduce((partialSum, a) => partialSum + formatTotal(a.total), 0);
-    const sumDebts = debts.reduce((partialSum, a) => partialSum + formatTotal(a.total), 0);
+    const formatTotal = (partial: string) => parseFloat(partial.replace(",", "."))
+    
     const totals = formatTotal(total);
+    const sumCategories = categories.reduce((partialSum, category) => partialSum + formatTotal(category.total), 0);
+    const sumDebts = debts.reduce((partialSum, debt) => partialSum + formatTotal(debt.total), 0);
+    
+
+    console.log("sumCategories:", sumCategories); 
+    console.log("sumDebts:", sumDebts); 
+    console.log("totals:", totals); 
 
     const sum = sumCategories + sumDebts + totals;
 
-    setBudgetForm(prev => ({ ...prev, total: sum.toFixed(2).replace(".", ",") }))
+    setBudgetForm(prev => ({ ...prev, total: sum.toFixed(2).replace(".", ",") }));
   }
+ 
+
 
   const savebudget = async () => {
     const { categories, total, debts } = budgetForm;
@@ -113,6 +121,7 @@ const CreateBudgetScreen: React.FC = () => {
       if (error?.message) setValidation([error.message])
     } finally { setLoadingEnd(!loadingEnd) }
   }
+  
 
   return (
     <View style={style.container}>
@@ -124,6 +133,7 @@ const CreateBudgetScreen: React.FC = () => {
           style={style.valueInput}
         >
           {budgetForm.total}
+         
         </Text>
       </View>
 

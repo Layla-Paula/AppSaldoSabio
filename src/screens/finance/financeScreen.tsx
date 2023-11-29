@@ -39,6 +39,7 @@ import ActionModalCalculator from '../../components/actionModalCalculadora';
 import api from '../../services/api';
 
 const FinanceScreen: React.FC = () => {
+  
   const navigation = useNavigation<StackNavigationProp<any>>();
   const { params } = useRoute<RouteProp<ParamRoute>>();
   const { theme } = React.useContext(ThemeContext);
@@ -168,9 +169,9 @@ const FinanceScreen: React.FC = () => {
         ...prev,
         money: "",
         description: "",
-        category: undefined, // ou o valor padrão desejado
-        paidDate: "", // ou a data padrão desejada
-        isPaid: false, // ou o valor padrão desejado
+        category: undefined, 
+        paidDate: "", 
+        isPaid: false, 
       }));
 
     } catch (error: any) {
@@ -179,23 +180,23 @@ const FinanceScreen: React.FC = () => {
     } finally { setLoadingEnd(!loadingEnd) }
   }
 
-  async function handleDelete(id: String){
-    try{
-      await api.delete('/receives/delete', {
-        params:{
-          item_id: id
-        }
-      })
-    }catch(err){
-      console.log(err);
-    }
-  }
+
 
   const deleted = () => {
     try {
       const deletedFinance = async () => {
         if (financeForm.id) await deleteFinance(financeForm.id)
-
+        try{
+           const receives = await api.get('/receives', {
+          });
+          await api.delete('/receives/delete', {
+            params:{
+              item_id: receives.data.id
+            }
+          })
+        }catch(err){
+          console.log(err);
+        }
         navigation.goBack();
       }
 
@@ -213,10 +214,7 @@ const FinanceScreen: React.FC = () => {
   }
 
   const handleTextInputPress = () => {
-    // Abre a modal da calculadora
     setIsCalculatorModalVisible(true);
-
-    // Define o campo como não editável ao abrir a modal
     setIsTextInputEditable(false);
   };
 
