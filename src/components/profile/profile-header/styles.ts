@@ -16,7 +16,7 @@ export const styles = (theme: ThemesConfig) => {
             height: 65,
             borderRadius: 50,
             borderWidth: 2,
-            backgroundColor: "#fa795a",
+            backgroundColor: "#E3B81D",
             alignItems: "center",
             justifyContent: "center",
         },

@@ -12,7 +12,6 @@ const ProfileHeader: React.FC = () => {
 
   const { user, signOut } = React.useContext(AuthContext);
 
-  // Se o usuário não estiver logado, não renderiza nada
   if (!user) {
     return null;
   }
