@@ -4,7 +4,6 @@ import { Entypo } from '@expo/vector-icons';
 import Home from '../screens/home';
 import FinanceHistoricScreen from "../screens/financeHistoric/financeHistoricScreen";
 import BudgetScreen from '../screens/budget/budgetScreen';
-import Report from '../screens/Report';
 // import FabButton from '../components/ButtonNew/FabButton';
 import CustomBottomTab from "../components/bottomTab/custom-bottom-tab";
 import DebtScreen from '../screens/debt/debtScreen';
