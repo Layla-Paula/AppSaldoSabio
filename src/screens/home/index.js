@@ -25,18 +25,18 @@ const Home = () => {
 
   useEffect(() => {
     let isActive = true;
-
+  
     async function getMovements() {
       console.log('Componente Home renderizado');
       try {
         const dateFormated = format(dateMovements, 'dd/MM/yyyy');
-
+  
         const balance = await api.get('/balance', {
-          params: {
-            date: dateFormated,
-          },
+      
         });
-
+  
+        console.log('Dados da API:', balance.data);
+  
         if (isActive) {
           setListBalance(balance.data);
           console.log('Balance Data:', balance.data);
@@ -45,11 +45,11 @@ const Home = () => {
         console.error('Error fetching data:', error);
       }
     }
-
+  
     getMovements();
-
+  
     return () => {
-      isActive = false; // Atualizacao de estado
+      isActive = false;
     };
   }, [isFocused, dateMovements]);
 
@@ -62,11 +62,11 @@ const Home = () => {
     <SafeAreaView style={style.container}>
       <Header title={user?.name} />
       <ListBalance
-        data={listBalance}
-        horizontal={true}
-        showsHorizontalScrollIndicator={false}
-        keyExtractor={(item) => item.tag}
-        renderItem={({ item }) => <BalanceItem data={item} />}
+      data={listBalance}
+      horizontal={true}
+      showsHorizontalScrollIndicator={false}
+      keyExtractor={(item) => item.tag}
+      renderItem={({ item }) => <BalanceItem data={item} />}
       />
 
       <HomeHeader />
